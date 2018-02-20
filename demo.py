@@ -1,6 +1,6 @@
-from workload.census_table import CensusTable
-from workload.predicate import Predicate
-from workload.schema import hh_persons
+from census_table import CensusTable
+from predicate import Predicate
+from schema import hh_persons
 from sqlalchemy.sql import and_, or_, not_, func, true
 
 
@@ -87,75 +87,75 @@ Total:	true
     ├── RACSOR-alone:	hh_persons."RACSOR" = 1 AND hh_persons."RACNUM" = 1
     └── two-or-more-races:	hh_persons."RACNUM" >= 2
 
-calling P5.render(sql=True) will show the sql expressions 
+calling P5.render(sql=True) will show the sql expressions
 
 Total:	true
-.  SELECT count(*) AS cnt 
-.  FROM hh_persons 
+.  SELECT count(*) AS cnt
+.  FROM hh_persons
 .  WHERE true
 ├── hisp:	hh_persons."isHISP" = 1
-│   .  SELECT count(*) AS cnt 
-│   .  FROM hh_persons 
+│   .  SELECT count(*) AS cnt
+│   .  FROM hh_persons
 │   .  WHERE hh_persons."isHISP" = 1
 │   ├── RACWHT-alone:	hh_persons."RACWHT" = 1 AND hh_persons."RACNUM" = 1
-│   │   .  SELECT count(*) AS cnt 
-│   │   .  FROM hh_persons 
+│   │   .  SELECT count(*) AS cnt
+│   │   .  FROM hh_persons
 │   │   .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACWHT" = 1 AND hh_persons."RACNUM" = 1
 │   ├── RACBLK-alone:	hh_persons."RACBLK" = 1 AND hh_persons."RACNUM" = 1
-│   │   .  SELECT count(*) AS cnt 
-│   │   .  FROM hh_persons 
+│   │   .  SELECT count(*) AS cnt
+│   │   .  FROM hh_persons
 │   │   .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACBLK" = 1 AND hh_persons."RACNUM" = 1
 │   ├── RACAIAN-alone:	hh_persons."RACAIAN" = 1 AND hh_persons."RACNUM" = 1
-│   │   .  SELECT count(*) AS cnt 
-│   │   .  FROM hh_persons 
+│   │   .  SELECT count(*) AS cnt
+│   │   .  FROM hh_persons
 │   │   .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACAIAN" = 1 AND hh_persons."RACNUM" = 1
 │   ├── RACASN-alone:	hh_persons."RACASN" = 1 AND hh_persons."RACNUM" = 1
-│   │   .  SELECT count(*) AS cnt 
-│   │   .  FROM hh_persons 
+│   │   .  SELECT count(*) AS cnt
+│   │   .  FROM hh_persons
 │   │   .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACASN" = 1 AND hh_persons."RACNUM" = 1
 │   ├── RACNHPI-alone:	hh_persons."RACNHPI" = 1 AND hh_persons."RACNUM" = 1
-│   │   .  SELECT count(*) AS cnt 
-│   │   .  FROM hh_persons 
+│   │   .  SELECT count(*) AS cnt
+│   │   .  FROM hh_persons
 │   │   .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACNHPI" = 1 AND hh_persons."RACNUM" = 1
 │   ├── RACSOR-alone:	hh_persons."RACSOR" = 1 AND hh_persons."RACNUM" = 1
-│   │   .  SELECT count(*) AS cnt 
-│   │   .  FROM hh_persons 
+│   │   .  SELECT count(*) AS cnt
+│   │   .  FROM hh_persons
 │   │   .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACSOR" = 1 AND hh_persons."RACNUM" = 1
 │   └── two-or-more-races:	hh_persons."RACNUM" >= 2
-│       .  SELECT count(*) AS cnt 
-│       .  FROM hh_persons 
+│       .  SELECT count(*) AS cnt
+│       .  FROM hh_persons
 │       .  WHERE hh_persons."isHISP" = 1 AND hh_persons."RACNUM" >= 2
 └── not_hisp:	hh_persons."isHISP" = 0
-    .  SELECT count(*) AS cnt 
-    .  FROM hh_persons 
+    .  SELECT count(*) AS cnt
+    .  FROM hh_persons
     .  WHERE hh_persons."isHISP" = 0
     ├── RACWHT-alone:	hh_persons."RACWHT" = 1 AND hh_persons."RACNUM" = 1
-    │   .  SELECT count(*) AS cnt 
-    │   .  FROM hh_persons 
+    │   .  SELECT count(*) AS cnt
+    │   .  FROM hh_persons
     │   .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACWHT" = 1 AND hh_persons."RACNUM" = 1
     ├── RACBLK-alone:	hh_persons."RACBLK" = 1 AND hh_persons."RACNUM" = 1
-    │   .  SELECT count(*) AS cnt 
-    │   .  FROM hh_persons 
+    │   .  SELECT count(*) AS cnt
+    │   .  FROM hh_persons
     │   .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACBLK" = 1 AND hh_persons."RACNUM" = 1
     ├── RACAIAN-alone:	hh_persons."RACAIAN" = 1 AND hh_persons."RACNUM" = 1
-    │   .  SELECT count(*) AS cnt 
-    │   .  FROM hh_persons 
+    │   .  SELECT count(*) AS cnt
+    │   .  FROM hh_persons
     │   .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACAIAN" = 1 AND hh_persons."RACNUM" = 1
     ├── RACASN-alone:	hh_persons."RACASN" = 1 AND hh_persons."RACNUM" = 1
-    │   .  SELECT count(*) AS cnt 
-    │   .  FROM hh_persons 
+    │   .  SELECT count(*) AS cnt
+    │   .  FROM hh_persons
     │   .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACASN" = 1 AND hh_persons."RACNUM" = 1
     ├── RACNHPI-alone:	hh_persons."RACNHPI" = 1 AND hh_persons."RACNUM" = 1
-    │   .  SELECT count(*) AS cnt 
-    │   .  FROM hh_persons 
+    │   .  SELECT count(*) AS cnt
+    │   .  FROM hh_persons
     │   .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACNHPI" = 1 AND hh_persons."RACNUM" = 1
     ├── RACSOR-alone:	hh_persons."RACSOR" = 1 AND hh_persons."RACNUM" = 1
-    │   .  SELECT count(*) AS cnt 
-    │   .  FROM hh_persons 
+    │   .  SELECT count(*) AS cnt
+    │   .  FROM hh_persons
     │   .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACSOR" = 1 AND hh_persons."RACNUM" = 1
     └── two-or-more-races:	hh_persons."RACNUM" >= 2
-        .  SELECT count(*) AS cnt 
-        .  FROM hh_persons 
+        .  SELECT count(*) AS cnt
+        .  FROM hh_persons
         .  WHERE hh_persons."isHISP" = 0 AND hh_persons."RACNUM" >= 2
 
 

@@ -3,8 +3,8 @@ import sqlalchemy as sa
 from sqlalchemy.sql import and_, or_, not_, func, true
 from anytree import Node, RenderTree
 from anytree.iterators import PreOrderIter
-from workload.schema import hh_persons
-from workload.predicate import Predicate
+from schema import hh_persons
+from predicate import Predicate
 
 
 class CensusTable():
@@ -56,4 +56,3 @@ class CensusTable():
                 stmt = str(node.sql(self.root_select)).split('\n')
                 for line in stmt:
                     print("%s.  %s" % (fill, line))
-
