@@ -42,6 +42,8 @@ class CensusTable():
         if choice_string == 'population':
             # for population queries
             self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons)
+        elif choice_string == '18_and_over':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(hh_persons.c.AGEP >= 18)
         else:
             raise Exception('invalid root select choice')
 
