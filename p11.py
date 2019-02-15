@@ -60,4 +60,4 @@ if __name__ == '__main__':
 
 
     # display the table
-    P11.render(sql=True)
+    P11.render(sql=False)

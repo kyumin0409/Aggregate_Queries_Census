@@ -46,6 +46,25 @@ class CensusTable():
             self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(hh_persons.c.AGEP >= 18)
         elif choice_string == 'under_20':
             self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(hh_persons.c.AGEP <20)
+        elif choice_string == 'white_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.RACWHT) == 1, hh_persons.c.RACNUM == 1))
+        elif choice_string == 'black_or_african_american_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.RACBLK) == 1, hh_persons.c.RACNUM == 1))
+        elif choice_string == 'indian_and_alaska_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.RACAIAN) == 1, hh_persons.c.RACNUM == 1))
+        elif choice_string == 'asian_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.RACASN) == 1, hh_persons.c.RACNUM == 1))
+        elif choice_string == 'hawaiian_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.RACNHPI) == 1, hh_persons.c.RACNUM == 1))
+        elif choice_string == 'other_race_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.RACSOR) == 1, hh_persons.c.RACNUM == 1))
+        elif choice_string == 'two_or_more_races':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where( hh_persons.c.RACNUM >= 2)
+        elif choice_string == 'hisp':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(hh_persons.c.isHISP==1)
+        elif choice_string == 'not_hisp_and_white_alone':
+            self.root_select = sa.select([func.count().label('cnt')]).select_from(hh_persons).where(and_((hh_persons.c.isHISP) == 0, hh_persons.c.RACWHT == 1))
+        
         else:
             raise Exception('invalid root select choice')
 
