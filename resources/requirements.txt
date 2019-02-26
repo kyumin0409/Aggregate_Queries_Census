@@ -1,0 +1,2 @@
+sqlalchemy==1.2.18
+anytree==2.6.0
