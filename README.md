@@ -1,5 +1,10 @@
 # census-workload
 
+Caroline KyuMin Kim
+University of Massachusetts Amherst
+Departmental Honors Thesis (May 2019)
+
+
 ## Environment
 ```bash
 export CENSUS_HOME=$HOME/Documents/census-workload
